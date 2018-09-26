@@ -19,15 +19,15 @@ define("Libs", APP_PATH . DS . 'app' . DS . "Libs" . DS);
 define("Models", APP_PATH  . DS . 'app' . DS . "Models" . DS);
 define("Views", APP_PATH . DS . 'app' . DS . "Views" . DS);
 // This Is For Include Path To Require OOP
-$path = get_include_path() . PS . Controllers . PS .  Functions . PS . Libs . PS . Models . PS . Views;
+$path = get_include_path() . PS . Controllers . PS . Models;
 set_include_path($path);
-
 //Included Classes
+require_once Libs . 'FrontController.php';
 spl_autoload_register(function ($class) {
     require_once ucfirst($class) . ".php";
 });
 $front = new FrontController();
-$front->route();
+$front->dispatch();
 //End Of File
 ob_end_flush();
 ?>

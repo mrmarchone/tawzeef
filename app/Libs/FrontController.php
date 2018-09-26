@@ -27,6 +27,7 @@ class FrontController {
         }
         if (!empty($this->_url[3])) {
             $this->_params = $this->_url[3];
+            $this->_params = explode('/', $this->_params);
         }
         if (file_exists(Controllers . ucfirst($this->_controller) . '.php')) 
         {
@@ -34,6 +35,7 @@ class FrontController {
             if (method_exists($controller, $this->_method)) {
                 $method = $this->_method;
                 $controller->$method();
+                call_user_func_array([$controller, $method], $this->_params);
             } else {
                 $this->_method = 'default';
             }

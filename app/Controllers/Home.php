@@ -1,7 +1,7 @@
 <?php
-class Home {
-    public function default () {
-        echo "Hello";
+class Home extends Controller {
+    public function default ($name = '') {
+        $this->view('Home/home');   
     }
 }
 ?>

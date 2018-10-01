@@ -1,7 +1,7 @@
 <?php
 class Home extends Controller {
-    public function default ($name = '') {
-        $this->view('Home/home');   
+    public function index ($name = '') {
+        $this->view('Home/home');
     }
 }
 ?>

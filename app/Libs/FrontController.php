@@ -2,15 +2,15 @@
 class FrontController {
     protected $_lang = 'en';
     protected $_controller = 'home';
-    protected $_method = 'default';
+    protected $_method = 'index';
     protected $_params = [];
     protected $_url = [];
-    protected function parseUrl () 
+    protected function parseUrl ()
     {
         $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $url = trim($url, '/');
         $url = explode('/', $url, 5);
-        array_shift($url); // Delete This From Server
+        // array_shift($url); // Delete This From Server
         return $url;
     }
     public function dispatch () 
@@ -40,7 +40,7 @@ class FrontController {
                 $this->_method = 'default';
             }
         } else {
-            $this->_controller = "error";
+            echo "Not Found Page";
         }
     }
 }

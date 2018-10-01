@@ -6,6 +6,7 @@ session_start();
 define("HOST", 'localhost');
 define("DB_USER", 'root');
 define("DB_PASS", "");
+define("DB_NAME", "");
 define("CHAR_SET", 'SET NAMES utf8');
 // Short Codes
 define('DS', DIRECTORY_SEPARATOR);
@@ -26,6 +27,8 @@ require_once Libs . 'FrontController.php';
 spl_autoload_register(function ($class) {
     require_once ucfirst($class) . ".php";
 });
+$con = Database::connect();
+$new = new Model();
 $front = new FrontController();
 $front->dispatch();
 //End Of File

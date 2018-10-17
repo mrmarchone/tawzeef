@@ -2,11 +2,14 @@
 //Neccassry To be Found
 ob_start();
 session_start();
+// CORS
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 //DataBase Config Sections
 define("HOST", 'localhost');
 define("DB_USER", 'root');
 define("DB_PASS", "");
-define("DB_NAME", "");
+define("DB_NAME", "tawzeev");
 define("CHAR_SET", 'SET NAMES utf8');
 // Short Codes
 define('DS', DIRECTORY_SEPARATOR);
@@ -28,7 +31,6 @@ spl_autoload_register(function ($class) {
     require_once ucfirst($class) . ".php";
 });
 $con = Database::connect();
-$new = new Model();
 $front = new FrontController();
 $front->dispatch();
 //End Of File
